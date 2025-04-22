@@ -27,12 +27,10 @@ jobs:
         id: getVersion
 
       - name: Copy generated .war to staging
-        run: |
-          mkdir staging 
-          cp target/*.war staging
+        run: mkdir staging && cp target/*.war staging
 
       - name: Upload generated .war to Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: mvn-hello-world-${{ steps.getVersion.outputs.version }}.zip
           path: staging
